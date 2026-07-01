@@ -14,6 +14,9 @@ def get_inventory() -> None:
                 inventory[key] = value
         except ValueError:
             print(f"Error - invalid parameter '{arg}'")
+    if len(inventory) == 0:
+        print("No items provided")
+        return
     total = sum(inventory.values())
     print(f"Got inventory: {inventory}")
     print(f"Item list: {list(inventory)}")
