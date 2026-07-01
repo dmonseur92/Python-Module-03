@@ -1,5 +1,6 @@
 import random
 
+
 def gen_player_achievements() -> None:
     achievements = (
         "Keyboard Warrior", "Vanilla Vim addict", "Segfault King",
@@ -8,7 +9,7 @@ def gen_player_achievements() -> None:
         "Strlen failer", "Norminette Junkie", "Kahoot feedback bomber"
     )
 
-    players = {
+    players: dict[str, set] = {
         "Alice": set(),
         "Bob": set(),
         "Charlie": set(),
@@ -22,14 +23,15 @@ def gen_player_achievements() -> None:
         print()
     print(f"All distinct achievements: {set.union(*players.values())}\n")
     print(f"Common achievements : {set.intersection(*players.values())}\n")
-    
+
     for name in players:
         others = set().union(*(players[n] for n in players if n != name))
         print(f"Only {name} has: {players[name].difference(others)}")
     print()
-    
+
     for name in players:
-        print(f"{name} is missing: {set(achievements).difference(players[name])}")
+        print(f"{name} is missing:"
+              f"{set(achievements).difference(players[name])}")
 
 
 if __name__ == "__main__":
